@@ -51,7 +51,26 @@ public class BinConverter {
 
 	public static int fromString(String text) {
 		// TODO expect text to contain 8 binary digits, parse to int value in
+		String option = "diy";
+		int result = 0;
+
+		switch (option) {
+			case "diy":
+				for (int i = 0; i < 8; i++) {
+					System.out.println(text.charAt(i));
+					result = result + ((text.charAt(i) - '0') << (7 - i));
+				}
+				System.out.println(result);
+				break;
+
+			case "shift":
+				for (int i = 0; i < 8; i++) {
+					result = (result << 1) | (text.charAt(i) - '0');
+				}
+				System.out.println(result);
+				break;
+		}
 		// 2-complement
-		return 0;
+		return result;
 	}
 }
